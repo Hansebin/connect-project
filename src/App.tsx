@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import Loading from "./screens/Loading";
 import { auth } from "./firebase";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import ResetPassword from "./routes/ResetPassword";
 
 const Container = styled.div`
   width: 80%;
@@ -72,6 +73,11 @@ const route = createBrowserRouter([
   {
     path: "create-account",
     element: <CreateAccount />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
     errorElement: <NotFound />,
   },
 ]);

@@ -19,7 +19,7 @@ function Login() {
 
     if (name === "email") {
       setEmail(value);
-    } else {
+    } else if (name === "password") {
       setPassword(value);
     }
   };
@@ -50,11 +50,11 @@ function Login() {
         <div>
           <form
             onSubmit={onSubmit}
-            className="w-full h-full pb-8 flex flex-col justify-center items-start"
+            className="w-full h-full flex flex-col justify-center items-start"
           >
             <label
               htmlFor="email"
-              className="text-lg font-bold text-main-green"
+              className="text-base font-bold text-main-green"
             >
               Email
             </label>
@@ -70,7 +70,7 @@ function Login() {
             />
             <label
               htmlFor="password"
-              className="text-lg font-semibold text-main-green"
+              className="text-base font-semibold text-main-green"
             >
               Password
             </label>
@@ -93,12 +93,26 @@ function Login() {
             <p className="w-full text-center text-sm text-red-500">{error}</p>
           ) : null}
         </div>
-        <p className="text-sm">
-          Don't have an account yet?{" "}
-          <Link to="/create-account" className="text-main-green">
-            Create an account
-          </Link>
-        </p>
+        <div className="flex flex-col justify-center items-center gap-1">
+          <p className="text-sm font-medium">
+            Don't have an account yet?{" "}
+            <Link
+              to="/create-account"
+              className="text-main-green hover:underline underline-offset-2"
+            >
+              Create an account
+            </Link>
+          </p>
+          <p className="text-sm font-medium">
+            Did you forget the password?{" "}
+            <Link
+              to="/reset-password"
+              className="text-main-green hover:underline underline-offset-2"
+            >
+              Reset password
+            </Link>
+          </p>
+        </div>
         <SocialLogIn />
       </authCom.Container>
     </div>
