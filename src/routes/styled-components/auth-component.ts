@@ -6,7 +6,7 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 
   border-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -15,7 +15,6 @@ export const Container = styled.div`
 export const Input = styled.input`
   width: 100%;
   padding: 15px 20px;
-  margin-bottom: 15px;
 
   font-size: 15px;
   font-weight: 500;
@@ -29,6 +28,10 @@ export const Input = styled.input`
   &:focus {
     outline: none;
     border: 2px solid #2bae66;
+  }
+
+  &:not(&[type="submit"]) {
+    margin-bottom: 15px;
   }
 `;
 
@@ -65,4 +68,10 @@ export const Button = styled.button`
 
   border: 1px solid #2bae66;
   border-radius: 10px;
+
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: #2bae6630;
+  }
 `;
