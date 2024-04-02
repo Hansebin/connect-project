@@ -30,8 +30,8 @@ function Category() {
   return (
     <div className="h-12 bg-[#2bae6630]">
       <ul className="h-full flex justify-center items-center gap-10">
-        {categories.map((category) => (
-          <List key={category.title}>
+        {categories.map((category, index) => (
+          <List key={`${category.title}-${index}`}>
             <Link to={category.path}>{category.title}</Link>
           </List>
         ))}
