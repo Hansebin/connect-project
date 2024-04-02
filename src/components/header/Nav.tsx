@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { auth } from "../../firebase";
+import { signOut } from "firebase/auth";
 
 const Wrapper = styled.header`
   width: 100%;
   height: 50px;
-  padding: 0 50px;
+  padding: 0 30px;
 
   display: flex;
   justify-content: space-between;
@@ -16,6 +18,22 @@ const Wrapper = styled.header`
 `;
 
 function Nav() {
+  const user = auth.currentUser;
+  const navigate = useNavigate();
+
+  const onClickBtn = async () => {
+    const ok = confirm("Are you sure you want to log out?");
+
+    if (!ok) return;
+
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Wrapper>
       <Link
@@ -61,25 +79,50 @@ function Nav() {
             </svg>
           </Link>
         </li>
-        <li>
-          <Link
-            to="/profile"
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-[#2bae66]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="white"
-              className="w-5 h-5"
+        {user ? (
+          <div className="flex justify-center items-center">
+            <li>
+              <Link
+                to="/profile"
+                className="w-7 h-7 flex items-center justify-center rounded-full bg-[#2bae66]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                  className="w-5 h-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </li>
+            <button
+              onClick={onClickBtn}
+              className="text-main-green font-semibold ml-1"
             >
-              <path
-                fillRule="evenodd"
-                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                clipRule="evenodd"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <Link to="/login" className="text-sm font-semibold text-main-green">
+            Log in
           </Link>
-        </li>
+        )}
       </ul>
     </Wrapper>
   );

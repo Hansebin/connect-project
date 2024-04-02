@@ -15,6 +15,7 @@ export const Container = styled.div`
 export const Input = styled.input`
   width: 100%;
   padding: 15px 20px;
+  margin-bottom: 15px;
 
   font-size: 15px;
   font-weight: 500;
@@ -28,10 +29,6 @@ export const Input = styled.input`
   &:focus {
     outline: none;
     border: 2px solid #2bae66;
-  }
-
-  &:not(&[type="submit"]) {
-    margin-bottom: 15px;
   }
 `;
 

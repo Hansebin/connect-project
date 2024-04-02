@@ -22,7 +22,7 @@ function CreateAccount() {
       setEmail(value);
     } else if (name === "name") {
       setName(value);
-    } else {
+    } else if (name === "password") {
       setPassword(value);
     }
   };
@@ -58,11 +58,11 @@ function CreateAccount() {
         <div>
           <form
             onSubmit={onSubmit}
-            className="w-full h-full pb-2 flex flex-col justify-center items-start"
+            className="w-full h-full flex flex-col justify-center items-start"
           >
             <label
               htmlFor="email"
-              className="text-lg font-bold text-main-green"
+              className="text-base font-bold text-main-green"
             >
               Email
             </label>
@@ -76,7 +76,10 @@ function CreateAccount() {
               autoComplete="false"
               required
             />
-            <label htmlFor="name" className="text-lg font-bold text-main-green">
+            <label
+              htmlFor="name"
+              className="text-base font-bold text-main-green"
+            >
               Name
             </label>
             <authCom.Input
@@ -91,7 +94,7 @@ function CreateAccount() {
             />
             <label
               htmlFor="password"
-              className="text-lg font-semibold text-main-green"
+              className="text-base font-semibold text-main-green"
             >
               Password
             </label>
@@ -116,7 +119,10 @@ function CreateAccount() {
         </div>
         <p className="text-sm">
           Do you already have an account?{" "}
-          <Link to="/login" className="text-main-green">
+          <Link
+            to="/login"
+            className="text-main-green hover:underline underline-offset-2"
+          >
             Go to log in
           </Link>
         </p>

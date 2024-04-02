@@ -6,6 +6,7 @@ export default {
       colors: {
         "main-green": "#2bae66",
         "main-green-300": "#2bae6630",
+        "main-black": "#111111",
       },
       height: {
         header: "98px",
