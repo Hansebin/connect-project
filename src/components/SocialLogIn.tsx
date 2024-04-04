@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import * as authCom from "../routes/styled-components/auth-component";
+import * as authCom from "../assets/auth-component";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,

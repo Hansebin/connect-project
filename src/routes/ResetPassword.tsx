@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as authCom from "./styled-components/auth-component";
+import * as authCom from "../assets/auth-component";
 import { auth } from "../firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -60,5 +60,3 @@ function ResetPassword() {
 }
 
 export default ResetPassword;
-
-// 버튼 -> 실제 이메일로 비밀번호 재설정 메일 전송

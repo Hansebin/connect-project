@@ -1,4 +1,4 @@
-import * as screen from "./styled-components/component";
+import * as screen from "../assets/screen-component";
 
 function ComponentError() {
   return (

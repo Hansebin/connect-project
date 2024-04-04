@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import * as screen from "./styled-components/component";
+import * as screen from "../assets/screen-component";
 
 function NotFound() {
   const navigate = useNavigate();

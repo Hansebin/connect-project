@@ -5,7 +5,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <div className="p-5 h-main">
+      <div className="py-5 px-7 h-main">
         <Outlet />
       </div>
     </>

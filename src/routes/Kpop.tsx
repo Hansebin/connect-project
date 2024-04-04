@@ -1,5 +1,13 @@
+import PostForm from "../components/PostForm";
+import Timeline from "../components/Timeline";
+
 function Kpop() {
-  return <h3>K-POP</h3>;
+  return (
+    <>
+      <PostForm category="k-pop" />
+      <Timeline />
+    </>
+  );
 }
 
 export default Kpop;
