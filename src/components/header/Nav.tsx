@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
+import { useState } from "react";
 
 const Wrapper = styled.header`
   width: 100%;
@@ -20,6 +21,8 @@ const Wrapper = styled.header`
 function Nav() {
   const user = auth.currentUser;
   const navigate = useNavigate();
+
+  const [avatar] = useState(user?.photoURL);
 
   const onClickBtn = async () => {
     const ok = confirm("Are you sure you want to log out?");
@@ -83,21 +86,29 @@ function Nav() {
           <div className="flex justify-center items-center">
             <li>
               <Link
-                to="/profile"
+                to={`/profile/${user.uid}`}
                 className="w-7 h-7 flex items-center justify-center rounded-full bg-[#2bae66]"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  className="w-5 h-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                    clipRule="evenodd"
+                {avatar ? (
+                  <img
+                    src={avatar}
+                    alt="user image"
+                    className="w-full rounded-full"
                   />
-                </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                )}
               </Link>
             </li>
             <button

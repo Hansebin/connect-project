@@ -56,11 +56,11 @@ function Timeline() {
 
   return (
     <>
-      <div className="py-7 grid grid-cols-7 items-center">
+      <div className="w-full py-7 grid grid-cols-7 items-center">
         <h1 className="text-2xl text-main-black font-bold">Posts</h1>
         <div className="col-span-6 h-0.5 bg-slate-300"></div>
       </div>
-      <div className="flex flex-col justify-center items-center gap-5">
+      <div className="w-full flex flex-col justify-center items-center gap-5">
         {posts.map((post) => (
           <Post key={post.id} {...post} />
         ))}

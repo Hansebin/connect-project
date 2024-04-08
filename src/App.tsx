@@ -15,6 +15,7 @@ import Loading from "./screens/Loading";
 import { auth } from "./firebase";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ResetPassword from "./routes/ResetPassword";
+import Profile from "./routes/Profile";
 
 const Container = styled.div`
   width: 80%;
@@ -60,6 +61,11 @@ const route = createBrowserRouter([
       {
         path: "sport",
         element: <Sport />,
+        errorElement: <ComponentError />,
+      },
+      {
+        path: "profile/:userId",
+        element: <Profile />,
         errorElement: <ComponentError />,
       },
     ],

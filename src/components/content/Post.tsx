@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { IPost } from "./Timeline";
 import { auth, db, storage } from "../../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
@@ -9,9 +8,9 @@ import PostEditForm from "./PostEditForm";
 // 포스트 작성 날짜 추가
 
 function Post({ nickname, category, post, image, userId, id }: IPost) {
+  const user = auth.currentUser;
   const [edit, setEdit] = useState(false);
   const [, setEditPost] = useState(post);
-  const user = auth.currentUser;
 
   const onDelete = async () => {
     const ok = confirm("Are you sure you want to delete the post?");
@@ -44,10 +43,7 @@ function Post({ nickname, category, post, image, userId, id }: IPost) {
       <div className="col-span-2 w-full grid grid-rows-5 gap-2 justify-start items-start">
         <div className="row-span-1 w-full flex items-center gap-7">
           <div className="flex justify-center items-center gap-1">
-            <Link
-              to="/profile"
-              className="w-6 h-6 flex items-center justify-center rounded-full bg-[#2bae66]"
-            >
+            <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#2bae66]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -60,7 +56,7 @@ function Post({ nickname, category, post, image, userId, id }: IPost) {
                   clipRule="evenodd"
                 />
               </svg>
-            </Link>
+            </div>
             <p className="text-sm text-main-black font-semibold">{nickname}</p>
           </div>
           {userId === user?.uid ? (
