@@ -88,7 +88,6 @@ function ProfileContent({ user }: ProfileContentProps) {
 
   return (
     <div className="flex flex-col justify-center items-start gap-10">
-      {/* 사용자 프로필 정보 */}
       <div className="flex justify-start items-center gap-4">
         {/* 사용자 프로필 사진 */}
         <form>
@@ -159,7 +158,6 @@ function ProfileContent({ user }: ProfileContentProps) {
           </svg>
         </div>
       </div>
-      {/* 목록 */}
       <div className="w-full p-5 flex justify-center items-center gap-20 bg-main-green rounded-md text-white">
         <div className="flex flex-col justify-center items-center gap-1">
           <span
@@ -179,7 +177,6 @@ function ProfileContent({ user }: ProfileContentProps) {
           <span>Comment</span>
         </div>
       </div>
-      {/* 구분선 */}
       <div className="w-full py-7 grid grid-cols-6 items-center">
         <h1 className="text-2xl text-main-black font-bold">My Post</h1>
         <div className="col-span-5 h-0.5 bg-slate-300"></div>
